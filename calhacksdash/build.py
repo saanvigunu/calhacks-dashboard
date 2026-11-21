@@ -11,7 +11,10 @@ import os
 import re
 from dataclasses import asdict
 
-from .devpost import parse_gallery_page, parse_home, parse_winners_jsonld
+try:
+    from .devpost import parse_gallery_page, parse_home, parse_winners_jsonld
+except ImportError:  # run directly as a script
+    from devpost import parse_gallery_page, parse_home, parse_winners_jsonld
 
 RAW = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                    os.pardir, "data", "calhacks13", "raw")
